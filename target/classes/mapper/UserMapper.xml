@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.twl.dao.UserDao">
+    <select id="findUserByMobileNumber" parameterType="String" resultType="org.twl.bean.User">
+        select * from user where mobileNumber = #{mobileNumber}
+    </select>
+    <select id="findAllUser" resultMap="Users">
+        select * from user limit #{position},#{size}
+    </select>
+
+    <insert id="insertUser" parameterType="org.twl.bean.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user(nickName, mobileNumber,password,id, addressId, orderId, chatId, createTime, state, isOnline) VALUES
+        (#{user.nickName},#{user.mobileNumber},#{user.password},0,#{user.addressId},#{user.orderId},#{user.chatId},#{user.createTime},#{user.state},#{user.isOnline})
+    </insert>
+
+    <resultMap id="Users" type="org.twl.bean.User">
+        <id property="nickName" column="nickName" jdbcType="VARCHAR"/>
+        <id property="mobileNumber" column="mobileNumber" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="SMALLINT"/>
+        <id property="password" column="password" jdbcType="VARCHAR"/>
+        <id property="addressId" column="addressId" jdbcType="SMALLINT"/>
+        <id property="orderId" column="orderId" jdbcType="SMALLINT"/>
+        <id property="chatId" column="chatId" jdbcType="SMALLINT"/>
+        <id property="createTime" column="createTime" jdbcType="VARCHAR"/>
+        <id property="state" column="state" jdbcType="SMALLINT"/>
+        <id property="isOnline" column="isOnline" jdbcType="SMALLINT"/>
+    </resultMap>
+</mapper>

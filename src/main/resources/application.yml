@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mtTRWYxBG88TTj6R
+    url: jdbc:mysql://8.142.80.62:55544/wxproject
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  config-location: classpath:mapper/mybatis-config.xml
+  type-aliases-package: org.twl.bean
